@@ -3,62 +3,52 @@
     ".read": "auth != null",
     ".write": "auth != null"
   },
-  
-  "users": {
-    "example username" : "password/authentication. Might not be needed since Fire Base can handle authentication",
-    "john doe" : "239423fui2hb374",
-    "Matthew Houston" : "23k4jhbfhui23h"
-  },
-  
-  "matches" : {
-    "example match name" : {
-        "options" : 
-            [
-                "type" : "Singles/Doubles",
-				"mode" : "Competative/Recreational",
-				"rounds" : 3,
-				"give-contact-info" : true
-            ],
-		"date" : "11/13/16 @ 01:00 pm",
-		"location" :
-			[
-				"long" : 123.123,
-				"lat" : 321.321
-			]
+  "data": {
+    "users": {
+      "example username": "password/authentication. Might not be needed since Fire Base can handle authentication",
+      "john doe": "239423fui2hb374",
+      "Matthew Houston": "23k4jhbfhui23h"
     },
-	"match1" : {
-        "options" : 
-            [
-                "type" : "Singles",
-				"mode" : "Competative",
-				"rounds" : 7,
-				"give-contact-info" : true
-            ],
-		"date" : "11/13/16 @ 12:00 pm",
-		"location" :
-			[
-				"long" : 123.123,
-				"lat" : 321.321
-			]
-    },
-	"example match name" : {
-        "options" : 
-            [
-                "type" : "Doubles",
-				"mode" : "Recreational",
-				"rounds" : 5,
-				"give-contact-i  nfo" : false
-            ],
-		"date" : "11/15/16 @ 01:00 pm",
-		"location" :
-			[
-				"long" : -123.123,
-				"lat" : 321.321
-			]
+    "matches": {
+      "example match name": {
+        "options": {
+          "type": "Singles/Doubles",
+          "mode": "Competative/Recreational",
+          "rounds": 3,
+          "give-contact-info": true
+        },
+        "date": "11/13/16 @ 01:00 pm",
+        "location": {
+          "long": 123.123,
+          "lat": 321.321
+        }
+      },
+      "match1": {
+        "options": {
+          "type": "Singles",
+          "mode": "Competative",
+          "rounds": 7,
+          "give-contact-info": true
+        },
+        "date": "11/13/16 @ 12:00 pm",
+        "location": {
+          "long": 123.123,
+          "lat": 321.321
+        }
+      },
+      "match2": {
+        "options": {
+          "type": "Doubles",
+          "mode": "Recreational",
+          "rounds": 5,
+          "give-contact-i  nfo": false
+        },
+        "date": "11/15/16 @ 01:00 pm",
+        "location": {
+          "long": -123.123,
+          "lat": 321.321
+        }
+      }
     }
-  },
-  
-  "chat" : {
-  
   }
 }
