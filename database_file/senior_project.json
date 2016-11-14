@@ -1,23 +1,19 @@
 {
-  "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
-  },
   "data": {
     "users": {
-      "example username": "password/authentication. Might not be needed since Fire Base can handle authentication",
+      "example username": "password_authentication. Might not be needed since Fire Base can handle authentication",
       "john doe": "239423fui2hb374",
       "Matthew Houston": "23k4jhbfhui23h"
     },
     "matches": {
       "example match name": {
         "options": {
-          "type": "Singles/Doubles",
-          "mode": "Competative/Recreational",
+          "type": "SinglesDoubles",
+          "mode": "CompetativeRecreational",
           "rounds": 3,
           "give-contact-info": true
         },
-        "date": "11/13/16 @ 01:00 pm",
+        "date": "111316 @ 01:00 pm",
         "location": {
           "long": 123.123,
           "lat": 321.321
@@ -30,7 +26,7 @@
           "rounds": 7,
           "give-contact-info": true
         },
-        "date": "11/13/16 @ 12:00 pm",
+        "date": "111316 @ 12:00 pm",
         "location": {
           "long": 123.123,
           "lat": 321.321
@@ -43,7 +39,7 @@
           "rounds": 5,
           "give-contact-i  nfo": false
         },
-        "date": "11/15/16 @ 01:00 pm",
+        "date": "111516 @ 01:00 pm",
         "location": {
           "long": -123.123,
           "lat": 321.321
