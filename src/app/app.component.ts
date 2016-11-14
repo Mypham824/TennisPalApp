@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Platform} from 'ionic-angular';
 import {ViewChild} from '@angular/core';
 import {StatusBar} from 'ionic-native';
+import * as firebase from 'firebase';
 
 // import pages
 import {WelcomePage} from '../pages/welcome/welcome';
@@ -81,17 +82,29 @@ export class MyApp {
 
   constructor(public platform: Platform) {
     this.rootPage = WelcomePage;
-
+ 
+ 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
+    const fbConf = {
+    apiKey: "AIzaSyAhoXyPHyUfskipPcHAg8XD51vC6I9vU-g",
+    authDomain: "tennispalapp-799a4.firebaseapp.com",
+    databaseURL: "https://tennispalapp-799a4.firebaseio.com",
+    storageBucket: "tennispalapp-799a4.appspot.com",
+    messagingSenderId: "318818093736"
+  };
+  firebase.initializeApp(fbConf);
   }
+
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
+  } 
 }
+
+

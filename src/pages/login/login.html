@@ -7,7 +7,7 @@
 <ion-content class="auth-bg">
   <div class="login-content white-bg">
     <div class="light-bg" padding text-center>
-      <button ion-button class="btn-round" margin-top color="primary" (click)="signUp()">SIGN UP</button>
+      <button ion-button class="btn-round" margin-top color="primary" (click)="goToSignUp()">SIGN UP</button>
     </div>
     <h2 text-center>Login</h2>
     <ion-list class="list-no-border" margin-bottom>
@@ -20,11 +20,13 @@
       <ion-item>
         <ion-label>
           Remember me
-          <span class="pull-right" color="secondary">Forgot?</span>
         </ion-label>
         <ion-checkbox color="dark"></ion-checkbox>
       </ion-item>
     </ion-list>
+    <button ion-button class="btn-round"(click)="goToResetPassword">
+           Forgot?
+          </button>
     <button ion-button class="no-round" no-margin block color="secondary" (click)="login()">LOGIN</button>
     <button ion-button class="no-round" no-margin color="facebook-color" block>LOGIN WITH FACEBOOK</button>
   </div>

@@ -24,6 +24,11 @@ import {ContactPage} from '../pages/contact/contact';
 import {SettingsPage} from '../pages/settings/settings';
 // end import pages
 
+// Import providers
+import { AuthData } from '../providers/auth-data';
+import { EventData } from '../providers/event-data';
+import { ProfileData } from '../providers/profile-data';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -66,6 +71,9 @@ import {SettingsPage} from '../pages/settings/settings';
     PostService,
     ChatService,
     NotificationService,
+    AuthData,
+    EventData,
+    ProfileData
     /* import services */
   ]
 })
