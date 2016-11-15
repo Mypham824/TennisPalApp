@@ -22,6 +22,7 @@ import {NewPostPage} from '../pages/new-post/new-post';
 import {NotificationsPage} from '../pages/notifications/notifications';
 import {ContactPage} from '../pages/contact/contact';
 import {SettingsPage} from '../pages/settings/settings';
+import {ResetPasswordPage} from '../pages/reset-password/reset-password';
 // end import pages
 
 // Import providers
@@ -44,6 +45,8 @@ import { ProfileData } from '../providers/profile-data';
     NotificationsPage,
     ContactPage,
     SettingsPage,
+    ResetPasswordPage,
+
     /* import pages */
   ],
   imports: [
@@ -64,6 +67,7 @@ import { ProfileData } from '../providers/profile-data';
     NotificationsPage,
     ContactPage,
     SettingsPage,
+    ResetPasswordPage,
     /* import pages */
   ],
   providers: [

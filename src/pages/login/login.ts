@@ -7,7 +7,8 @@ import {ActivityPage} from "../activity/activity";
 import {RegisterPage} from "../register/register";
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
-import {ResetPasswordPage} from "../resetpassword/resetpassword"
+import {ResetPasswordPage} from "../reset-password/reset-password";
+
 
 
 /*
@@ -91,11 +92,10 @@ export class LoginPage {
     this.nav.push(RegisterPage);
   }
 
-//  goToResetPassword(){
- //   this.nav.push(ResetPasswordPage);
-//  }
-  login(){
-    this.nav.push(ActivityPage);
+  
+  goToResetPassword(){
+    this.nav.push(ResetPasswordPage);
   }
+
 }
 
