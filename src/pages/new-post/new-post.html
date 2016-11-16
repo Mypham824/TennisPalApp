@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>New Post</ion-title>
+    <ion-title>New Match</ion-title>
     <ion-buttons end>
       <button ion-button (click)="post()">
         <ion-icon name="send" color="primary"></ion-icon>
@@ -21,12 +21,41 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-textarea placeholder="What's on you mind?"></ion-textarea>
+<ion-content padding class="test">
+  <ion-item>
+  <ion-label>Match Type</ion-label>
+  <ion-select [(ngModel)]="match-type">
+    <ion-option value="singles">Singles</ion-option>
+    <ion-option value="doubles">Doubles</ion-option>
+  </ion-select>
+  <ion-label>Match Mode</ion-label>
+  <ion-select [(ngModel)]="match-mode">
+    <ion-option value="recreational">Recreational</ion-option>
+    <ion-option value="competitive">Competitive</ion-option>
+  </ion-select>
+  <!---
+  <ion-label>Best Of</ion-label>
+  <ion-select [(ngModel)]="best-of">
+    <ion-option value=3>3</ion-option>
+    <ion-option value=5>5</ion-option>
+	ion-option value=7>7</ion-option>
+  </ion-select>
+  <label class="item item-input">
+  <span class="input-label">Date of Match</span>
+  <input type="date">
+  </label>
+  <label class="item item-input">
+  <span class="input-label">Location</span>
+  <input type="text">
+  </label>
+  <ion-label>Give Contact Information?</ion-label>
+  <ion-toggle [(ngModel)]="give-contact"></ion-toggle> --->
+</ion-item>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar class="no-border">
+  <!--- Commenting out the default buttons for now since they don't do anything
     <ion-buttons start>
       <ion-icon name="happy"></ion-icon>
     </ion-buttons>
@@ -47,5 +76,6 @@
         <ion-icon name="pin" color="gray"></ion-icon>
       </button>
     </ion-buttons>
+	--->
   </ion-toolbar>
 </ion-footer>

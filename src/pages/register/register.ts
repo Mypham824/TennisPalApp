@@ -40,7 +40,7 @@ export class RegisterPage {
     this[field + "Changed"] = true;
   }
 
-  /**
+   /**
    * If the form is valid it will call the AuthData service to sign the user up password displaying a loading
    *  component while the user waits.
    *
