@@ -4,6 +4,7 @@ import {ActivityPage} from "../activity/activity";
 import {LoginPage} from "../login/login";
 
 
+
 /*
  Generated class for the LoginPage page.
 
@@ -28,4 +29,6 @@ export class WelcomePage {
   login() {
     this.nav.setRoot(LoginPage);
   }
+
+
 }

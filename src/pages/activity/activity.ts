@@ -1,10 +1,36 @@
 import {Component} from '@angular/core';
 import {NavController, ActionSheetController, Platform} from 'ionic-angular';
-
+import {NavController} from 'ionic-angular';
 import {PostService} from '../../services/post-service';
 import {PostPage} from "../post/post";
 import {UserPage} from "../user/user";
 import {NewPostPage} from "../new-post/new-post";
+import * as firebase from 'firebase';
+
+
+
+/* TEST GROUNDS */
+/* Wait until more posts will be done
+var postsRef = firebase.database().ref('posted-matches/');
+postsRef.on('value', function(snapshot) {
+	matt_test(snapshot.val());
+}); */
+/*
+var database_return = firebase.database();
+var myApp = angular.module("myModule", []);
+
+myApp.controller("myController", function ($scope)){
+	var postsRef = 'posted-matches/'
+	firebase.database().ref(postsRef).once('value').then(function(snapshot){
+		var test = snapshot.val();
+	};
+	
+	$scope.test = test;
+});*/
+
+//firebase.initializeApp();
+//var database_return = firebase.database();
+
 
 /*
  Generated class for the LoginPage page.
