@@ -97,5 +97,9 @@ export class LoginPage {
     this.nav.push(ResetPasswordPage);
   }
 
+  login(){
+    this.nav.push(ActivityPage);
+  }
+
 }
 
