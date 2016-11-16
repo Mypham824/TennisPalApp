@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-
+import * as firebase from 'firebase';
 
 /*
   Generated class for the LoginPage page.
@@ -19,6 +19,10 @@ export class NewPostPage {
   // post status
   post() {
     // add your code here
+	firebase.database().ref('matt_test/').set({
+		message : "test"
+	});
+
     // back to activity page
     this.nav.pop();
   }
