@@ -20,8 +20,9 @@ export class NewPostPage {
   post() {
     // add your code here
 	var timestamp = Date.now();
+	var str_timestamp = timestamp.toString();
 	var matchid = new Date().getUTCMilliseconds();
-	firebase.database().ref(timestamp).set({
+	firebase.database().ref(str_timestamp).set({
 		"match-id" : "matchid",
 		"match-type" : "match-type",
 		"match-mode" : "Competative",
