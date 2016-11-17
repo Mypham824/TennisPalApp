@@ -8,6 +8,7 @@ import {RegisterPage} from "../register/register";
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import {ResetPasswordPage} from "../reset-password/reset-password";
+import {WelcomePage} from "../welcome/welcome";
 
 
 
@@ -65,7 +66,7 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
-        this.nav.setRoot(ActivityPage);
+        this.nav.setRoot(WelcomePage);
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
@@ -97,9 +98,9 @@ export class LoginPage {
     this.nav.push(ResetPasswordPage);
   }
 
-  login(){
-    this.nav.push(ActivityPage);
-  }
+  //login(){
+   // this.nav.push(ActivityPage);
+ // }
 
 }
 
