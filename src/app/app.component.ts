@@ -90,11 +90,20 @@ export class MyApp {
       StatusBar.styleDefault();
     });
     const fbConf = {
+		
+		apiKey: "AIzaSyCZ6-zkUrF6DGM4bfqvi3DnKDl5dPLLNJA",
+		authDomain: "tennispalapp-f7176.firebaseapp.com",
+		databaseURL: "https://tennispalapp-f7176.firebaseio.com",
+		storageBucket: "tennispalapp-f7176.appspot.com",
+		messagingSenderId: "792577726359"
+
+	/*
     apiKey: "AIzaSyAhoXyPHyUfskipPcHAg8XD51vC6I9vU-g",
     authDomain: "tennispalapp-799a4.firebaseapp.com",
     databaseURL: "https://tennispalapp-799a4.firebaseio.com",
     storageBucket: "tennispalapp-799a4.appspot.com",
     messagingSenderId: "318818093736"
+	*/
   };
   firebase.initializeApp(fbConf);
   }

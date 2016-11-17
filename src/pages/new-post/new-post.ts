@@ -19,15 +19,17 @@ export class NewPostPage {
   // post status
   post() {
     // add your code here
-	firebase.database().ref('posted-matches/').set({
-		"match-id" : 12352351234,
-		"match-type" : "Singles",
+	var timestamp = Date.now();
+	var matchid = new Date().getUTCMilliseconds();
+	firebase.database().ref(timestamp).set({
+		"match-id" : "matchid",
+		"match-type" : "match-type",
 		"match-mode" : "Competative",
-		"best-of" : 3,
-		"give-contact" : true,
+		"best-of" : "3",
+		"give-contact" : "true",
 		"date" : "2016-11-01",
 		"location" : "USF",
-		"match-taken" : false
+		"match-taken" : "false"
 	});
 
     // back to activity page

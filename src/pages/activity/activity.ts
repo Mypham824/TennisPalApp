@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, ActionSheetController, Platform} from 'ionic-angular';
-import {NavController} from 'ionic-angular';
+
 import {PostService} from '../../services/post-service';
 import {PostPage} from "../post/post";
 import {UserPage} from "../user/user";
