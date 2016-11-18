@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-
+import * as firebase from 'firebase';
 
 /*
   Generated class for the LoginPage page.
@@ -19,6 +19,20 @@ export class NewPostPage {
   // post status
   post() {
     // add your code here
+	var timestamp = Date.now();
+	var str_timestamp = timestamp.toString();
+	var matchid = new Date().getUTCMilliseconds();
+	firebase.database().ref(str_timestamp).set({
+		"match-id" : "matchid",
+		"match-type" : "match-type",
+		"match-mode" : "Competative",
+		"best-of" : "3",
+		"give-contact" : "true",
+		"date" : "2016-11-01",
+		"location" : "USF",
+		"match-taken" : "false"
+	});
+
     // back to activity page
     this.nav.pop();
   }
