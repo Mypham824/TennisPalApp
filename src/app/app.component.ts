@@ -45,14 +45,14 @@ export class MyApp {
     {
       title: 'Chats',
       icon: 'ios-mail-outline',
-      count: 2,
+      count: 0,
       component: ChatsPage
     },
 
     {
       title: 'Notifications',
       icon: 'ios-notifications-outline',
-      count: 5,
+      count: 0,
       component: NotificationsPage
     },
 
@@ -90,11 +90,11 @@ export class MyApp {
       StatusBar.styleDefault();
     });
     const fbConf = {
-    apiKey: "AIzaSyBCN560uuvUmfh_EWf04X6BJo4OO3CUj5k",
-    authDomain: "tennispalapp.firebaseapp.com",
-    databaseURL: "https://tennispalapp.firebaseio.com",
-    storageBucket: "tennispalapp.appspot.com",
-    messagingSenderId: "12548067954"
+    apiKey: "AIzaSyCZ6-zkUrF6DGM4bfqvi3DnKDl5dPLLNJA",
+    authDomain: "tennispalapp-f7176.firebaseapp.com",
+    databaseURL: "https://tennispalapp-f7176.firebaseio.com",
+    storageBucket: "tennispalapp-f7176.appspot.com",
+    messagingSenderId: "792577726359"
   };
   firebase.initializeApp(fbConf);
   }

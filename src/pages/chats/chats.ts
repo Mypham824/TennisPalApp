@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
-import {ChatService} from '../../services/chat-service';
+
 import {ChatDetailPage} from "../chat-detail/chat-detail";
 
 /*
@@ -17,9 +17,9 @@ import {ChatDetailPage} from "../chat-detail/chat-detail";
 export class ChatsPage {
   public chats: any;
 
-  constructor(private nav: NavController, private chatService: ChatService) {
-    // get sample data only
-    this.chats = chatService.getAll();
+  constructor(private nav: NavController) {
+
+    
   }
 
   // view chat detail

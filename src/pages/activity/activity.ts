@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {NavController, ActionSheetController, Platform} from 'ionic-angular';
-
-import {PostService} from '../../services/post-service';
 import {PostPage} from "../post/post";
 import {UserPage} from "../user/user";
 import {NewPostPage} from "../new-post/new-post";
+import {PostData} from "../../providers/post-data";
+import {ProfileData} from "../../providers/profile-data";
+import {AuthData} from "../../providers/auth-data";
 
 /*
  Generated class for the LoginPage page.
@@ -17,83 +18,42 @@ import {NewPostPage} from "../new-post/new-post";
   templateUrl: 'activity.html',
 })
 export class ActivityPage {
-  // list of posts
+
   public posts;
 
-  constructor(private nav: NavController, private postService: PostService, public actionSheetCtrl: ActionSheetController,
-              public platform: Platform) {
-    // set sample data
-   /* this.posts = postService.getAll();*/
+  constructor(public nav: NavController,  public postData: PostData,) {
+ 
 
    this.nav =nav;
+   this.postData = postData;
+
+
+   this.postData.getPost().on('value', snapshot =>{
+
+      let rawList = [];
+      snapshot.forEach( snap => {
+        rawList.push({
+          id: snap.key,
+          type: snap.val().type,
+          mode: snap.val().mode,
+          best: snap.val().best,
+          location: snap.val().location,
+          date: snap.val().date,
+          description: snap.val().description,
+        });
+      });
+      this.posts = rawList;
+    });
   }
+
+
   //goes to UserPage
   goToProfile(){
     this.nav.push(UserPage);
   }
 
-  // toggle like
-  toggleLike(post) {
-    // if user liked
-    if (post.liked) {
-      post.likeCount--;
-    } else {
-      post.likeCount++;
-    }
-
-    post.liked = !post.liked
-  }
-
-  // on click, go to post detail
-  viewPost(postId) {
-    this.nav.push(PostPage, {id: postId})
-  }
-
-  // on click, go to user timeline
-  viewUser(userId) {
-    this.nav.push(UserPage, {id: userId})
-  }
-
-  showActions() {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Delete',
-          role: 'destructive',
-          icon: !this.platform.is('ios') ? 'trash' : null,
-          handler: () => {
-            console.log('Delete clicked');
-          }
-        },
-        {
-          text: 'Share',
-          icon: !this.platform.is('ios') ? 'share' : null,
-          handler: () => {
-            console.log('Share clicked');
-          }
-        },
-        {
-          text: 'Favorite',
-          icon: !this.platform.is('ios') ? 'heart-outline' : null,
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
-          icon: !this.platform.is('ios') ? 'close' : null,
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-
   // create a new post
-  cPost() {
+  createPost() {
     this.nav.push(NewPostPage);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+
 import firebase from 'firebase';
 import 'rxjs/add/operator/map';
 
@@ -25,11 +25,30 @@ export class PostData {
   }
 
 
-  createPost(matchtype: string, matchmode: string, bestof: number): any{
+  getPost(): any {
+    return this.userPost
+  }
+
+    getPostDetail(postId): any {
+    return this.userPost.child(postId);
+  }
+
+  createNewPost(
+  matchtype: string, 
+  matchmode: string, 
+  bestof: number, 
+  location: string, 
+  dateofmatch: number,
+  description: string
+  ): any{
     return this.userPost.push({
       type: matchtype,
       mode: matchmode,
-      best: bestof
+      best: bestof, 
+      location: location,
+      date: dateofmatch,
+      description: description,
+
     }).then( newPost => {
       this.userPost.child(newPost.key).child('id').set(newPost.key);
     })

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {NavController, Content} from 'ionic-angular';
 
-import {ChatService} from '../../services/chat-service';
+
 
 /*
  Generated class for the LoginPage page.
@@ -20,10 +20,10 @@ export class ChatDetailPage {
   public chat: any;
   public newMessage: any;
 
-  constructor(public nav: NavController, public chatService: ChatService) {
+  constructor(public nav: NavController) {
     // get sample data only
     //this.chat = chatService.getItem(navParams.get('id'));
-    this.chat = chatService.getItem(0);
+  
   }
 
   // send message

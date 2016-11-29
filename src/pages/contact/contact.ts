@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
-import {UserService} from '../../services/user-service';
+
 import {UserPage} from "../user/user";
 
 /*
@@ -17,9 +17,9 @@ import {UserPage} from "../user/user";
 export class ContactPage {
     public contacts: any;
 
-    constructor(public nav: NavController, public userService: UserService) {
+    constructor(public nav: NavController) {
       // set sample data
-      this.contacts = userService.getAll();
+     
     }
 
     // view contact

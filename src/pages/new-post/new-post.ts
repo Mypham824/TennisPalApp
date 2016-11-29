@@ -20,8 +20,14 @@ export class NewPostPage {
     this.postData = postData;
   }
 
-  createPost(matchtype: string, matchmode: string, bestof: number) {
-    this.postData.createPost(matchtype, matchmode, bestof).then( () => {
+  createNewPost(
+   matchtype: string,
+   matchmode: string, 
+   bestof: number, 
+   location: string, 
+   dateofmatch: number,
+   description: string ) {
+    this.postData.createNewPost(matchtype, matchmode, bestof, location, dateofmatch,description ).then( () => {
       this.nav.pop();
     });
 

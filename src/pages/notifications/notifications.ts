@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
-import {NotificationService} from '../../services/notification-service';
+
 import {PostPage} from "../post/post";
 
 /*
@@ -17,9 +17,9 @@ import {PostPage} from "../post/post";
 export class NotificationsPage {
   public notifications: any;
 
-  constructor(public nav: NavController, public notificationService: NotificationService) {
+  constructor(public nav: NavController) {
     // set sample data
-    this.notifications = notificationService.getAll();
+    
   }
 
   // view post

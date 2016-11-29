@@ -1,8 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {NavController, ActionSheetController, Platform, Content} from 'ionic-angular';
 
-import {PostService} from '../../services/post-service';
+;
 import {UserPage} from "../user/user";
+import {PostData} from "../../providers/post-data";
+import {ProfileData} from "../../providers/profile-data";
 
 /*
  Generated class for the LoginPage page.
@@ -20,11 +22,10 @@ export class PostPage {
   public post: any;
   public comment: any;
 
-  constructor(public nav: NavController, public postService: PostService, public actionSheetCtrl: ActionSheetController,
+  constructor(public nav: NavController,  public actionSheetCtrl: ActionSheetController,
               public platform: Platform) {
     // get sample data only
-    //this.post = postService.getItem(navParams.get('id'));
-    this.post = postService.getItem(0);
+
   }
 
   toggleLike(post) {

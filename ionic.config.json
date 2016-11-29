@@ -2,5 +2,6 @@
   "name": "ion_blue_social",
   "app_id": "0e189852",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "defaultBrowser": "chrome"
 }
