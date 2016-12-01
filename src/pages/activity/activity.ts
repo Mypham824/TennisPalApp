@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, ModalController, ToastController, Content, Events } from 'ionic-angular';
 
 import {AppPosts} from '../../providers/app-data';
@@ -9,7 +9,7 @@ import {DataSort} from '../../providers/data-sort';
 
 
 import {NewPostPage} from "../new-post/new-post";
-import {PostPosts} from "../post/post"; 
+
 
 
 
@@ -43,7 +43,7 @@ export class ActivityPage {
              public events: Events) { }
 
     public onPostAdded = (childSnapshot, prevChildKey) => {
-    let priority = childSnapshot.val(); // priority..
+    let priority = childSnapshot.val(); 
     var self = this;
     self.events.publish('post:created');
     // fetch new thread..
@@ -124,12 +124,12 @@ getPosts() {
 
 createThread() {
     var self = this;
-    let modalPage = this.modalCtrl.create(ActivityPage);
+    let modalPage = this.modalCtrl.create(NewPostPage);
 
     modalPage.onDidDismiss((data: any) => {
       if (data) {
         let toast = this.toastCtrl.create({
-          message: 'Thread created',
+          message: 'Post has been created',
           duration: 3000,
           position: 'bottom'
         });
@@ -148,7 +148,7 @@ createThread() {
   viewComments(key: string) {
     if (this.internetConnected) {
       this.nav.push( {
-        threadKey: key
+        postKey: key
       });
     } else {
       this.notify('Network not found..');

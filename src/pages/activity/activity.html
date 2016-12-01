@@ -1,5 +1,5 @@
 <ion-header>
- <ion-navbar color="primary">
+ <ion-navbar no-border-bottom color="primary">
     <ion-title>Feed</ion-title>
      <ion-buttons end>
        <button ion-button icon-only (click)="goToProfile()">
@@ -10,11 +10,6 @@
 </ion-header>
 
 
-  
-
-<ion-content padding>
-
-  
 
   <ion-content>
 
@@ -22,18 +17,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <div *ngIf="loading">
-    <img src="assets/images/ring.gif" style="display:block; margin:auto" />
-  </div>
 
   <ion-list *ngIf="!loading">
-    <ion-item *ngFor="let post of posts"  (onViewComments)="viewComments($event)"></ion-item>
+    <app-post *ngFor="let post of posts" [post]="post" (onViewComments)="viewComments($event)"></app-post>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="fetchNextPosts($event)" threshold="10px">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   </ion-content>
+
     <ion-fab bottom right>
     <button ion-fab mini (click)="createPost()">
       <ion-icon name="add"></ion-icon>

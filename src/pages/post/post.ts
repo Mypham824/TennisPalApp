@@ -15,17 +15,17 @@ export class PostPosts implements OnInit, OnDestroy {
     @Input() post: AppPosts;
     @Output() onViewComments = new EventEmitter<string>();
 
-    constructor(private referenceData: ReferenceData) { }
+    constructor(private refData: ReferenceData) { }
 
        ngOnInit() {
         var self = this;
-        self.referenceData.getPostsRef().child(self.post.key).on('child_changed', self.onCommentAdded);
+        self.refData.getPostsRef().child(self.post.key).on('child_changed', self.onCommentAdded);
     }
 
       ngOnDestroy() {
          console.log('destroying..');
         var self = this;
-        self.referenceData.getPostsRef().child(self.post.key).off('child_changed', self.onCommentAdded);
+        self.refData.getPostsRef().child(self.post.key).off('child_changed', self.onCommentAdded);
     }
 
    

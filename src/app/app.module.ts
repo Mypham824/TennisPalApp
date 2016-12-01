@@ -14,7 +14,7 @@ import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {ActivityPage} from '../pages/activity/activity';
-//import {PostPage} from '../pages/post/post';
+import {PostPosts} from '../pages/post/post';
 import {ChatsPage} from '../pages/chats/chats';
 import {UserPage} from '../pages/user/user';
 import {ChatDetailPage} from '../pages/chat-detail/chat-detail';
@@ -49,6 +49,7 @@ import {DataSort} from '../providers/data-sort';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
+    PostPosts
 
     /* import pages */
   ],
@@ -70,6 +71,7 @@ import {DataSort} from '../providers/data-sort';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
+    PostPosts
     /* import pages */
   ],
   providers: [
