@@ -47,38 +47,3 @@
 
 
 
-<!--
-<ion-content class="auth-bg">
-  <div class="login-content white-bg">
-    <div class="light-bg" padding text-center>
-      <button ion-button class="btn-round" margin-top color="primary" (click)="goToSignUp()">SIGN UP</button>
-    </div>
-    <h2 text-center>Login</h2>
-    <ion-list class="list-no-border" margin-bottom>
-     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
-        placeholder="Your email address"
-        [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
-      <p>Please enter a valid email.</p>
-    </ion-item>
-      <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Remember me
-        </ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
-    </ion-list>
-    <button ion-button class="btn-round"(click)="goToResetPassword()">
-           Forgot?
-          </button>
-    <button ion-button class="no-round" no-margin block color="secondary" (click)="login()">LOGIN</button>
-    <button ion-button class="no-round" no-margin color="facebook-color" block>LOGIN WITH FACEBOOK</button>
-  </div>
-</ion-content>
--->

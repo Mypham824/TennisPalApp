@@ -67,7 +67,8 @@ export class LoginPage implements OnInit{
                 .then(function (result) {
                     self.nav.setRoot(ActivityPage);
                 }).catch(function (error) {
-               
+               //If invalid credentials are entered, a toast will pop up and you will be able 
+               //to try again
                     loader.dismiss().then(() => {
                              let toast = self.toastCtrl.create({
                                     message: 'You have entered in invalid credentials.',
@@ -92,10 +93,6 @@ export class LoginPage implements OnInit{
   goToResetPassword(){
     this.nav.push(ResetPasswordPage);
   }
-
-  //login(){
-   // this.nav.push(ActivityPage);
- // }
 
 }
 
