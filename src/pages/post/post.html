@@ -1,29 +1,29 @@
 <ion-item text-wrap>
     <ion-card>
-        <ion-item>
-            <h2>{{post.user.username}}</h2>
-            <p>{{post.datecreated | date:'medium'}}</p>
-        </ion-item>
-        <div class="thread-card-title wordwrap">
-            {{post.title}}
-        </div>
-        <div class="thread-card-question wordwrap left-border-primary">
-            {{post.description}}
-        </div>
 
-        <ion-row class="left-border-primary">
+      <h2> <strong>{{post.title}}</strong></h2>
+      <p>Matchtype: <strong>{{post.matchtype}}</strong><p>
+      <p>Matchmode: <strong>{{post.matchmode}}</strong></p>
+      <p>Best Of: <strong>{{post.bestof}}</strong></p>
+      <p>Date of Match: <strong>{{post.dateofmatch}}</strong></p>
+      <p>Location: <strong>{{post.location}}</strong></p>
+      <p>Description: <strong>{{post.description}}</strong></p>
+  
+  
             <ion-col>
                 <button color="primary" clear small (click)="viewComments(post.key)">
         <ion-icon name="quote"></ion-icon>
-        <div>{{post.comments}} Comments</div>
+        <div> {{post.comments}} Comments</div>
       </button>
             </ion-col>
-            <ion-col center text-center>
-                <ion-note>
-                    {{post.location}}
-                </ion-note>
-            </ion-col>
-        </ion-row>
+  
+   <ion-item>
+     <div class align="right">
+            <h2>{{post.user.username}}</h2>
+            <p>{{post.datecreated | date:'medium'}}</p>
+            </div>
+        </ion-item>
+
     </ion-card>
 </ion-item>
 
@@ -35,10 +35,33 @@
 
 
 
+<!--
+        <ion-item>
+            <h2>{{post.user.username}}</h2>
+            <p>{{post.datecreated | date:'medium'}}</p>
+        </ion-item>
+        <div class="thread-card-title wordwrap">
+            Title: {{post.title}}
+        </div>
+        <div class="thread-card-question wordwrap left-border-primary">
+           Description: {{post.description}}
+        </div>
 
+        <ion-row class="left-border-primary">
+            <ion-col>
+                <button color="primary" clear small (click)="viewComments(post.key)">
+        <ion-icon name="quote"></ion-icon>
+        <div> {{post.comments}} Comments</div>
+      </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+                   Location: {{post.location}}
+                </ion-note>
+            </ion-col>
+        </ion-row>
 
-
-
+-->
 
 
 
