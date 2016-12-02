@@ -1,0 +1,40 @@
+<ion-header>
+ <ion-navbar no-border-bottom color="primary">
+    <ion-title>Feed</ion-title>
+     <ion-buttons end>
+       <button ion-button icon-only (click)="goToProfile()">
+        <ion-icon class="ion-ios-contact-outline"></ion-icon>
+       </button>
+    </ion-buttons>  
+  </ion-navbar>
+</ion-header>
+
+
+
+  <ion-content>
+
+  <ion-refresher (ionRefresh)="reloadPosts($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list *ngIf="!loading">
+    <app-post *ngFor="let post of posts" [post]="post" (onViewComments)="viewComments($event)"></app-post>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="fetchNextPosts($event)" threshold="50px"  *ngIf="(start > 0) && (queryText.trim().length == 0) && internetConnected">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  </ion-content>
+
+    <ion-fab bottom right>
+    <button ion-fab mini (click)="createPost()" *ngIf="internetConnected">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+ 
+
+
+
