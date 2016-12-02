@@ -14,7 +14,7 @@ import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {ActivityPage} from '../pages/activity/activity';
-import {PostPage} from '../pages/post/post';
+import {PostPosts} from '../pages/post/post';
 import {ChatsPage} from '../pages/chats/chats';
 import {UserPage} from '../pages/user/user';
 import {ChatDetailPage} from '../pages/chat-detail/chat-detail';
@@ -29,6 +29,10 @@ import {ResetPasswordPage} from '../pages/reset-password/reset-password';
 import { AuthData } from '../providers/auth-data';
 import { PostData } from '../providers/post-data';
 import { ProfileData } from '../providers/profile-data';
+import { ReferenceData} from '../providers/ref-data';
+import {DataRoute} from '../providers/data-route';
+import {DataSort} from '../providers/data-sort';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,6 @@ import { ProfileData } from '../providers/profile-data';
     LoginPage,
     RegisterPage,
     ActivityPage,
-    PostPage,
     ChatsPage,
     UserPage,
     ChatDetailPage,
@@ -46,6 +49,7 @@ import { ProfileData } from '../providers/profile-data';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
+    PostPosts
 
     /* import pages */
   ],
@@ -59,7 +63,6 @@ import { ProfileData } from '../providers/profile-data';
     LoginPage,
     RegisterPage,
     ActivityPage,
-    PostPage,
     ChatsPage,
     UserPage,
     ChatDetailPage,
@@ -68,6 +71,7 @@ import { ProfileData } from '../providers/profile-data';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
+    PostPosts
     /* import pages */
   ],
   providers: [
@@ -77,7 +81,10 @@ import { ProfileData } from '../providers/profile-data';
     NotificationService,
     AuthData,
     PostData,
-    ProfileData
+    ProfileData,
+    ReferenceData,
+    DataRoute,
+    DataSort
     /* import services */
   ]
 })

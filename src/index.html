@@ -31,6 +31,19 @@
 <!-- Ionic's root component and where the app will load -->
 <ion-app></ion-app>
 
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCZ6-zkUrF6DGM4bfqvi3DnKDl5dPLLNJA",
+    authDomain: "tennispalapp-f7176.firebaseapp.com",
+    databaseURL: "https://tennispalapp-f7176.firebaseio.com",
+    storageBucket: "tennispalapp-f7176.appspot.com",
+    messagingSenderId: "792577726359"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <!-- cordova.js required for cordova apps -->
 <script src="cordova.js"></script>
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ActivityPage} from "../activity/activity";
 import {LoginPage} from "../login/login";
-
+import {ReferenceData} from '../../providers/ref-data';
 
 
 /*

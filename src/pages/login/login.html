@@ -1,35 +1,37 @@
 
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
 
+<ion-card-title>
+  TennisPal
+ </ion-card-title>
+<ion-content>
 
-<ion-content class="auth-bg">
-
-  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+  <form [formGroup]="loginAppForm" (ngSubmit)="onSubmit(loginAppForm.value)">
     <div class="login-content white-bg">
       <div class="light-bg" padding text-center>
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
-        placeholder="Your email address"
-        [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
-      <p>Please enter a valid email.</p>
-    </ion-item>
-</div>
-</div>
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
-        placeholder="Your password"
-        [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
-      <p>Your password needs more than 6 characters.</p>
-    </ion-item>
 
-    <button ion-button block type="submit">
-      Login
-    </button>
+    <ion-item [class.error]="!email.valid && email.touched">
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" value="" [formControl]="email"placeholder="Your email address"></ion-input>
+    </ion-item>
+    <div *ngIf="email.hasError('required') && email.touched" class="error-box">* Email is required.</div>
+        <div *ngIf="email.hasError('pattern') && email.touched" class="error-box">* Enter a valid email address.</div>
+
+      </div>
+   </div>
+
+    <ion-item [class.error]="!password.valid && password.touched">
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" value="" [formControl]="password"placeholder="Your password"></ion-input>
+    </ion-item>
+    <div *ngIf="password.hasError('required') && password.touched" class="error-box">* Password is required.</div>
+        <div *ngIf="password.hasError('minlength') && password.touched" class="error-box">* Minimum password length is 5.</div>
+
+    <button ion-button type="submit" class="custom-button" [disabled]="!loginAppForm.valid" block>Login</button>
 
   </form>
 <div class="primary" padding text-center>

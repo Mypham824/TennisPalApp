@@ -34,12 +34,7 @@ export class ResetPasswordPage {
     this[field + "Changed"] = true;
   }
 
-  /**
-   * If the form is valid it will call the AuthData service to reset the user's password displaying a loading
-   *  component while the user waits.
-   *
-   * If the form is invalid it will just log the form value, feel free to handle that as you like.
-   */
+ 
   resetPassword(){
 
     this.submitAttempt = true;

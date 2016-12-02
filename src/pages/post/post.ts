@@ -1,108 +1,45 @@
-import {Component, ViewChild} from '@angular/core';
-import {NavController, ActionSheetController, Platform, Content} from 'ionic-angular';
+import { Component, EventEmitter, OnInit, OnDestroy, Input, Output } from '@angular/core';
 
-;
-import {UserPage} from "../user/user";
-import {PostData} from "../../providers/post-data";
-import {ProfileData} from "../../providers/profile-data";
 
-/*
- Generated class for the LoginPage page.
+import {AppPosts} from '../../providers/app-data';
+import { ReferenceData} from '../../providers/ref-data';
 
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
- */
+
+
 @Component({
-  selector: 'page-post',
-  templateUrl: 'post.html',
+    selector: 'app-post',
+    templateUrl: 'post.html'
 })
-export class PostPage {
-  @ViewChild(Content) content: Content;
 
-  public post: any;
-  public comment: any;
+export class PostPosts implements OnInit, OnDestroy {
+    @Input() post: AppPosts;
+    @Output() onViewComments = new EventEmitter<string>();
 
-  constructor(public nav: NavController,  public actionSheetCtrl: ActionSheetController,
-              public platform: Platform) {
-    // get sample data only
+    constructor(private refData: ReferenceData) { }
 
-  }
-
-  toggleLike(post) {
-    // if user liked
-    if (post.liked) {
-      post.likeCount--;
-    } else {
-      post.likeCount++;
+       ngOnInit() {
+        var self = this;
+        self.refData.getPostsRef().child(self.post.key).on('child_changed', self.onCommentAdded);
     }
 
-    post.liked = !post.liked
-  }
+      ngOnDestroy() {
+         console.log('destroying..');
+        var self = this;
+        self.refData.getPostsRef().child(self.post.key).off('child_changed', self.onCommentAdded);
+    }
 
-  // on click, go to user timeline
-  viewUser(userId) {
-    this.nav.push(UserPage, {id: userId})
-  }
+   
+    public onCommentAdded = (childSnapshot, prevChildKey) => {
+       console.log(childSnapshot.val());
+        var self = this;
 
-  // comment to post
-  postComment() {
-    // add comment
-    this.post.comments.push(
-      {
-        user_id: 2,
-        name: 'Ben Sparrow',
-        face: 'assets/img/user/ben.png',
-        liked: false,
-        likeCount: 1,
-        time: 'Just now',
-        content: this.comment
-      });
+        self.post.comments = childSnapshot.val();
+    }
 
-    // clear input
-    this.comment = '';
+    viewComments(key: string) {
+        this.onViewComments.emit(key);
+    }
 
-    // scroll to bottom
-    setTimeout(() => {
-      // scroll to bottom
-      this.content.scrollToBottom();
-    }, 200)
-  }
-
-  showActions() {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Delete',
-          role: 'destructive',
-          icon: !this.platform.is('ios') ? 'trash' : null,
-          handler: () => {
-            console.log('Delete clicked');
-          }
-        },
-        {
-          text: 'Share',
-          icon: !this.platform.is('ios') ? 'share' : null,
-          handler: () => {
-            console.log('Share clicked');
-          }
-        },
-        {
-          text: 'Favorite',
-          icon: !this.platform.is('ios') ? 'heart-outline' : null,
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
-          icon: !this.platform.is('ios') ? 'close' : null,
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
 }
+
+

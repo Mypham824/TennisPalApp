@@ -34,6 +34,7 @@ export class PostData {
   }
 
   createNewPost(
+  title: string,
   matchtype: string, 
   matchmode: string, 
   bestof: number, 
@@ -42,6 +43,7 @@ export class PostData {
   description: string
   ): any{
     return this.userPost.push({
+      title: title, 
       type: matchtype,
       mode: matchmode,
       best: bestof, 

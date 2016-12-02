@@ -27,6 +27,8 @@
     "ionic-angular": "2.0.0-rc.2",
     "ionic-native": "2.2.3",
     "ionicons": "3.0.0",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.2",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.21"
   },
@@ -45,4 +47,3 @@
   ],
   "cordovaPlatforms": []
 }
-

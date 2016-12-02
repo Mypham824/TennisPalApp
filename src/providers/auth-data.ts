@@ -1,29 +1,48 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
+import { UserInfo } from '../providers/app-data';
 
+declare var firebase: any;
 @Injectable()
 export class AuthData {
-  // Here we declare the variables we'll be using.
-  public fireAuth: any;
-  public userProfile: any;
 
-  constructor() {
-    this.fireAuth = firebase.auth();
-    this.userProfile = firebase.database().ref('/userProfile');
-  }
-  loginUser(email: string, password: string): any {
-  return this.fireAuth.signInWithEmailAndPassword(email, password);
-}
-signupUser(email: string, password: string): any {
-  return this.fireAuth.createUserWithEmailAndPassword(email, password)
-    .then((newUser) => {
-      this.userProfile.child(newUser.uid).set({email: email});
-    });
-}
-resetPassword(email: string): any {
+    usersRef: any = firebase.database().ref('users');
+    public fireAuth: any;
+           
+    constructor() { }
+
+    registerUser(user: UserInfo) {
+        return firebase.auth().createUserWithEmailAndPassword(user.email, user.password);
+    }
+
+    signInUser(email: string, password: string) {
+        return firebase.auth().signInWithEmailAndPassword(email, password);
+    }
+
+    signOut() {
+        return firebase.auth().signOut();
+    }
+
+    addUser(username: string,  uid: string) {
+        this.usersRef.child(uid).update({
+            username: username,
+            
+        });
+    }
+
+    getLoggedInUser() {
+        return firebase.auth().currentUser;
+    }
+
+    onAuthStateChanged(callback) {
+        return firebase.auth().onAuthStateChanged(callback);
+    }
+    resetPassword(email: string): any {
   return this.fireAuth.sendPasswordResetEmail(email);
+  
 }
 logoutUser(): any {
-  return this.fireAuth.signOut();
+  return this.fireAuth.signOut()
+
 }
 }

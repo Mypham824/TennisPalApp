@@ -3,7 +3,6 @@ import {NavController, LoadingController, AlertController,NavParams, Platform, A
 
 import {UserService} from '../../services/user-service';
 import {PostService} from "../../services/post-service";
-import {PostPage} from "../post/post";
 import { AuthData } from '../../providers/auth-data';
 import {ProfileData} from '../../providers/profile-data';
 import {LoginPage} from "../login/login";
@@ -36,9 +35,7 @@ export class UserPage {
     
   }
 logOut(){
-  this.authData.logoutUser().then(() => {
-    this.nav.setRoot(LoginPage);
-  });
+    this.nav.setRoot(LoginPage)
 }
 updateName(){
   let alert = this.alertCtrl.create({

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
 
-import {PostPage} from "../post/post";
+
 
 /*
   Generated class for the LoginPage page.
@@ -22,8 +22,5 @@ export class NotificationsPage {
     
   }
 
-  // view post
-  viewPost(id) {
-    this.nav.push(PostPage, {id: id});
-  }
 }
+

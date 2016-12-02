@@ -1,19 +1,21 @@
-import {Component} from '@angular/core';
-import {Platform} from 'ionic-angular';
-import {ViewChild} from '@angular/core';
-import {StatusBar} from 'ionic-native';
+import {Component, ViewChild, OnInit } from '@angular/core';
+import {Platform, Nav, MenuController, ViewController, Events, ModalController } from 'ionic-angular';
+import { Network, Splashscreen, StatusBar } from 'ionic-native';
+import { Subscription } from '../../node_modules/rxjs/Subscription';
 
 import firebase from 'firebase';
 // import pages
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
 import {ActivityPage} from '../pages/activity/activity';
-import {PostPage} from '../pages/post/post';
 import {ChatsPage} from '../pages/chats/chats';
 import {NotificationsPage} from '../pages/notifications/notifications';
 import {ContactPage} from '../pages/contact/contact';
 import {SettingsPage} from '../pages/settings/settings';
 // end import pages
+
+import {ReferenceData} from '../../providers/ref-data';
+
 
 @Component({
   templateUrl: 'app.html',
@@ -35,12 +37,6 @@ export class MyApp {
       component: ActivityPage
     },
 
-    {
-      title: 'Post',
-      icon: 'ios-list-box-outline',
-      count: 0,
-      component: PostPage
-    },
 
     {
       title: 'Chats',
