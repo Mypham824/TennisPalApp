@@ -30,6 +30,7 @@ export class LoginPage implements OnInit{
     constructor(public nav: NavController, 
                 public authData: AuthData, 
                 public refData: ReferenceData,
+                public toastCtrl: ToastController,
                 public fb: FormBuilder,
                 public alertCtrl: AlertController, 
                 public loadingCtrl: LoadingController) { }
@@ -50,7 +51,7 @@ export class LoginPage implements OnInit{
         if (this.loginAppForm.valid) {
 
             let loader = this.loadingCtrl.create({
-                content: 'Signing in..',
+                content: 'Signing in for tennis fun!',
                 dismissOnPageChange: true
             });
 
@@ -61,15 +62,27 @@ export class LoginPage implements OnInit{
                 password: signInForm.password
             };
 
-            console.log(user);
+ console.log(user);
             this.authData.signInUser(user.email, user.password)
                 .then(function (result) {
                     self.nav.setRoot(ActivityPage);
-                })
+                }).catch(function (error) {
+               
+                    loader.dismiss().then(() => {
+                             let toast = self.toastCtrl.create({
+                                    message: 'You have entered in invalid credentials.',
+                                    duration: 4000,
+                                    position: 'top'
+                                });
+                                toast.present();
+                            });  
+
+                });
+                      
+                   
+             
         }
-        
-    
-}
+    }
 
   goToSignUp(){
     this.nav.push(RegisterPage);
