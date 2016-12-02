@@ -40,6 +40,7 @@ export class UserPage implements OnInit {
       self.getUserImage().then(function (url) {
         self.userProfile = {
           username: userData.username,
+
           totalFavorites: userData.hasOwnProperty('favorites') === true ?
             Object.keys(userData.favorites).length : 0
         };
@@ -54,7 +55,6 @@ export class UserPage implements OnInit {
         console.log(error.code);
         self.userProfile = {
           username: userData.username,
-          dateOfBirth: userData.dateOfBirth,
           totalFavorites: userData.hasOwnProperty('favorites') === true ?
             Object.keys(userData.favorites).length : 0
         };
@@ -71,6 +71,12 @@ export class UserPage implements OnInit {
 
     self.tennisPalAccount = self.authData.getLoggedInUser();
     return self.refData.getUser(self.authData.getLoggedInUser().uid);
+  }
+
+  getUserImage() {
+    var self = this;
+
+    return self.refData.getStorageRef().child('' + self.tennisPalAccount.uid + '').getDownloadURL();
   }
 
   getUserPosts() {
