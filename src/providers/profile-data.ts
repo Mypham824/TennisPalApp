@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {  AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 /*
   Generated class for the ProfileData provider.
@@ -16,7 +16,7 @@ export class ProfileData {
   currentUser: any; 
 
 
-  constructor() {
+  constructor(public alertCtrl: AlertController) {
   
     this.currentUser = firebase.auth().currentUser;
     this.userProfile = firebase.database().ref('/userProfile');
@@ -29,32 +29,26 @@ export class ProfileData {
   }
 
 
-  updateName(firstName: string, lastName: string): any {
-    return this.userProfile.child(this.currentUser.uid).update({
-      firstName: firstName,
-      lastName: lastName,
-    });
-  }
-
-  
-  updateDOB(birthDate: string): any {
-    return this.userProfile.child(this.currentUser.uid).update({
-      birthDate: birthDate,
-    });
-  }
-
-
   updateEmail(newEmail: string): any {
     this.currentUser.updateEmail(newEmail).then(() => {
       this.userProfile.child(this.currentUser.uid).update({
         email: newEmail
       });
     }, (error) => {
-      console.log(error);
-    });
-  }
+     var errorMessage: string = error.message;
+        let errorAlert = this.alertCtrl.create({
+          message: errorMessage,
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
+        });
 
-  
+      errorAlert.present();
+      });
+  }
   updatePassword(newPassword: string): any {
     this.currentUser.updatePassword(newPassword).then(() => {
       console.log("Password Changed");

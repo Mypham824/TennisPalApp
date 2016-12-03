@@ -44,10 +44,10 @@ export class ResetPasswordPage {
     } else {
       this.authData.resetPassword(this.resetPasswordForm.value.email).then((user) => {
         let alert = this.alertCtrl.create({
-          message: "We just sent you a reset link to your email",
+          message: "Please check your email for a password reset link. Check your spam box if you are unable to locate it.",
           buttons: [
             {
-              text: "Ok",
+              text: "Click to Exit",
               role: 'cancel',
               handler: () => {
                 this.nav.pop();

@@ -5,7 +5,7 @@ import {UserService} from '../../services/user-service';
 import {PostService} from "../../services/post-service";
 import { AuthData } from '../../providers/auth-data';
 import {ProfileData} from '../../providers/profile-data';
-import {LoginPage} from "../login/login";
+import {WelcomePage} from "../welcome/welcome";
 
 /*
  Generated class for the LoginPage page.
@@ -30,45 +30,13 @@ export class UserPage {
 
     this.profileData.getUserProfile().on('value', (data) => {
       this.userProfile = data.val();
-      this.birthDate = this.userProfile.birthDate;
     });
     
   }
 logOut(){
-    this.nav.setRoot(LoginPage)
+    this.nav.setRoot(WelcomePage)
 }
-updateName(){
-  let alert = this.alertCtrl.create({
-    message: "Your first name & last name",
-    inputs: [
-      {
-        name: 'firstName',
-        placeholder: 'Your first name',
-        value: this.userProfile.firstName
-      },
-      {
-        name: 'lastName',
-        placeholder: 'Your last name',
-        value: this.userProfile.lastName
-      },
-    ],
-    buttons: [
-      {
-        text: 'Cancel',
-      },
-      {
-        text: 'Save',
-        handler: data => {
-          this.profileData.updateName(data.firstName, data.lastName);
-        }
-      }
-    ]
-  });
-  alert.present();
-}
-updateDOB(birthDate){
-  this.profileData.updateDOB(birthDate);
-}
+
 updateEmail(){
   let alert = this.alertCtrl.create({
     inputs: [
@@ -91,6 +59,7 @@ updateEmail(){
   });
   alert.present();
 }
+
 
 updatePassword(){
   let alert = this.alertCtrl.create({
