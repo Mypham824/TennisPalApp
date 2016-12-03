@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Comments</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="showCommentActions()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="!commentsLoaded">
+        <img src="assets/images/ring.gif" style="display:block; margin:auto" />
+    </div>
+    <ion-list *ngIf="commentsLoaded">
+        <ion-item *ngFor="let comment of comments" text-wrap>
+            <ion-card>
+
+                <ion-item>
+                    <ion-avatar item-left>
+                        
+                    </ion-avatar>
+                    <h2>{{comment.user.username}}</h2>
+                    <p>{{comment.datecreated | date:'medium'}}</p>
+                </ion-item>
+
+                <ion-card-content class="left-border-primary">
+                    <p>{{comment.text}}</p>
+                </ion-card-content>
+
+                <ion-row class="left-border-primary">
+                    
+                    <ion-col center text-center>
+                        <ion-note>
+                            {{comment.datecreated | date:"MM/dd/yy"}}
+                        </ion-note>
+                    </ion-col>
+                </ion-row>
+
+            </ion-card>
+        </ion-item>
+    </ion-list>
+    
+    <ion-fab right bottom>
+        <button ion-fab color="primary"><ion-icon name="create" (click)="createComment()"></ion-icon></button>
+    </ion-fab>
+</ion-content>
