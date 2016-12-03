@@ -16,7 +16,7 @@
                 <ion-input type="text" value="" [formControl]="username"></ion-input>
             
             <div *ngIf="username.hasError('required') && username.touched" class="error-box">* Username is required.</div>
-            <div *ngIf="username.hasError('minlength') && username.touched" class="error-box">* Minimum password length is 8.</div>
+            <div *ngIf="username.hasError('minlength') && username.touched" class="error-box">* Minimum username length is 5.</div>
       </ion-item>
    <ion-item [class.error]="!email.valid && email.touched">
                 <ion-label floating>Email address</ion-label>
@@ -30,7 +30,7 @@
                 <ion-input type="password" value="" [formControl]="password"></ion-input>
             </ion-item>
             <div *ngIf="password.hasError('required') && password.touched" class="error-box">* Password is required.</div>
-            <div *ngIf="password.hasError('minlength') && password.touched" class="error-box">* Minimum password length is 5.</div>
+            <div *ngIf="password.hasError('minlength') && password.touched" class="error-box">* Minimum password length is 6.</div>
         </ion-list>
      <button ion-button block type="submit" [disabled]="!createSignupForm.valid" block>
       Create an Account

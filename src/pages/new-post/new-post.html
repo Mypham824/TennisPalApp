@@ -16,7 +16,7 @@
 		  <ion-input type="text" value="" [formControl]="title"></ion-input>
 	 </ion-item>
 			<div *ngIf="title.hasError('required') && title.touched" class="error-box">* Title is required.</div>
-			 <div *ngIf="title.hasError('minlength') && title.touched" class="error-box">* Minimum title length is 8.</div>
+			 <div *ngIf="title.hasError('minlength') && title.touched" class="error-box">* Minimum title length is 4.</div>
 
   <ion-item>
 	  <ion-label>Match Type</ion-label>
@@ -51,11 +51,16 @@
 		<ion-label>Location</ion-label>
 		  <ion-input type="text" value="" [formControl]="location"></ion-input>
   </ion-item>
+ 			 <div *ngIf="location.hasError('required') && location.touched" class="error-box">* Location is required.</div>
+			 <div *ngIf="location.hasError('minlength') && location.touched" class="error-box">* Minimum location length is 5.</div>
   
     <ion-item>
 		  <ion-label>decription</ion-label>
 		  <ion-textarea rows="5"[formControl]="description"></ion-textarea>
   </ion-item>
+	 <div *ngIf="description.hasError('required') && description.touched" class="error-box">* Description is required.</div>
+			 <div *ngIf="description.hasError('minlength') && description.touched" class="error-box">* Minimum description length is 10.</div>
+
 	<button ion-button type="submit" class="custom-button" block>Submit</button>
 	</form>
 </ion-content>

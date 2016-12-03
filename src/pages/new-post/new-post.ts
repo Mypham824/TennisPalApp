@@ -34,11 +34,11 @@ export class NewPostPage implements OnInit {
    ngOnInit() {
     console.log('in post create..');
     this.createPostForm = this.fb.group({
-      'title': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
+      'title': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'matchtype': [''],
       'matchmode': [''],
       'bestof': [''],
-      'location': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
+      'location': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       'dateofmatch':[''],
       'description': ['', Validators.compose([Validators.required, Validators.minLength(10)])]
     });

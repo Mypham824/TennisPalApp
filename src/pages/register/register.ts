@@ -33,9 +33,9 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
         this.createSignupForm = this.fb.group({
-            'username': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+            'username': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
             'email': ['', Validators.compose([Validators.required])],
-            'password': ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+            'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
            
         });
 
