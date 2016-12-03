@@ -71,7 +71,7 @@ export class LoginPage implements OnInit{
                //to try again
                     loader.dismiss().then(() => {
                              let toast = self.toastCtrl.create({
-                                    message: 'You have entered in invalid credentials.',
+                                    message: 'You have entered invalid credentials.',
                                     duration: 4000,
                                     position: 'top'
                                 });
