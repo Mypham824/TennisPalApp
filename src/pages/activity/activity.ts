@@ -42,6 +42,7 @@ export class ActivityPage {
               public dataSort: DataSort,
              public events: Events) { }
 
+//initializes components after the first display of data
   ngOnInit() {
     var self = this;
     self.segment = 'all';
