@@ -38,7 +38,7 @@ export class AuthData {
         return firebase.auth().onAuthStateChanged(callback);
     }
     resetPassword(email: string): any {
-  return this.fireAuth.sendPasswordResetEmail(email);
+  return firebase.auth().sendPasswordResetEmail(email);
   
 }
 logoutUser(): any {

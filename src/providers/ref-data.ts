@@ -164,7 +164,13 @@ export class ReferenceData {
      getFavoritePosts(user: string) {
         return this.usersRef.child(user + '/favorites/').once('value');
     }
+     addPostToFavorites(userKey: string, threadKey: string) {
+        return this.usersRef.child(userKey + '/favorites/' + threadKey).set(true);
+    }
+        voteComment(commentKey: string, like: boolean, user: string): any {
+        let commentRef = this.commentsRef.child(commentKey + '/votes/' + user);
+        return commentRef.set(like);
 }
 
 
-  
+}

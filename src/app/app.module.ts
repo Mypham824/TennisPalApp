@@ -23,6 +23,8 @@ import {NotificationsPage} from '../pages/notifications/notifications';
 import {ContactPage} from '../pages/contact/contact';
 import {SettingsPage} from '../pages/settings/settings';
 import {ResetPasswordPage} from '../pages/reset-password/reset-password';
+import {CommentCreatePage} from '../pages/new-comment/new-comment';
+import {PostCommentsPage} from '../pages/post-comments/post-comments';
 // end import pages
 
 // Import providers
@@ -49,7 +51,9 @@ import {DataSort} from '../providers/data-sort';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
-    PostPosts
+    PostPosts,
+    CommentCreatePage,
+    PostCommentsPage
 
     /* import pages */
   ],
@@ -71,7 +75,9 @@ import {DataSort} from '../providers/data-sort';
     ContactPage,
     SettingsPage,
     ResetPasswordPage,
-    PostPosts
+    PostPosts,
+    CommentCreatePage,
+    PostCommentsPage
     /* import pages */
   ],
   providers: [

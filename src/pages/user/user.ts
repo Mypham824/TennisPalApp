@@ -1,112 +1,119 @@
-import {Component, OnInit} from '@angular/core';
-import {NavController, LoadingController, ActionSheetController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, LoadingController, AlertController,NavParams, Platform, ActionSheetController} from 'ionic-angular';
 
-
+import {UserService} from '../../services/user-service';
+import {PostService} from "../../services/post-service";
 import { AuthData } from '../../providers/auth-data';
-import {ReferenceData} from '../../providers/ref-data';
-import {AppUser} from '../../providers/app-data';
+import {ProfileData} from '../../providers/profile-data';
+import {LoginPage} from "../login/login";
 
+/*
+ Generated class for the LoginPage page.
 
+ See http://ionicframework.com/docs/v2/components/#navigation for more info on
+ Ionic pages and navigation.
+ */
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
 })
-export class UserPage implements OnInit {
-  userDataLoaded: boolean = false;
-  user: AppUser;
-  username: string;
-  userProfile = {};
-  tennisPalAccount: any = {};
-  userStatistics: any = {};
- 
+export class UserPage {
+ public userProfile: any;
+  public birthDate: string;
 
-  constructor(public navCtrl: NavController, 
-              public refData: ReferenceData,
-              public loadingCtrl: LoadingController,
-              public actionSheetCtrl: ActionSheetController, 
-              public authData: AuthData) {}
-  
-   ngOnInit() {
-    this.loadUserProfile();
-  }
-
-  loadUserProfile() {
-    var self = this;
-    self.userDataLoaded = false;
+  constructor(public nav: NavController, public profileData: ProfileData,
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController, 
+    public authData: AuthData) {
+    this.nav = nav;
+    this.profileData = profileData;
     
-    self.getUserData().then(function (snapshot) {
-      let userData: any = snapshot.val();
 
-      self.getUserImage().then(function (url) {
-        self.userProfile = {
-          username: userData.username,
-
-          totalFavorites: userData.hasOwnProperty('favorites') === true ?
-            Object.keys(userData.favorites).length : 0
-        };
-
-        self.user = {
-          uid : self.tennisPalAccount.uid,
-          username : userData.username
-        };
-
-        self.userDataLoaded = true;
-      }).catch(function (error) {
-        console.log(error.code);
-        self.userProfile = {
-          username: userData.username,
-          totalFavorites: userData.hasOwnProperty('favorites') === true ?
-            Object.keys(userData.favorites).length : 0
-        };
-        self.userDataLoaded = true;
-      });
+    this.profileData.getUserProfile().on('value', (data) => {
+      this.userProfile = data.val();
+      this.birthDate = this.userProfile.birthDate;
     });
-
-    self.getUserPosts();
-    self.getUserComments();
+    
   }
-
-  getUserData() {
-    var self = this;
-
-    self.tennisPalAccount = self.authData.getLoggedInUser();
-    return self.refData.getUser(self.authData.getLoggedInUser().uid);
-  }
-
-  getUserImage() {
-    var self = this;
-
-    return self.refData.getStorageRef().child('' + self.tennisPalAccount.uid + '').getDownloadURL();
-  }
-
-  getUserPosts() {
-    var self = this;
-
-    self.refData.getUserPosts(self.authData.getLoggedInUser().uid)
-      .then(function (snapshot) {
-        let userPosts: any = snapshot.val();
-        if (userPosts !== null) {
-          self.userStatistics.totalPosts = Object.keys(userPosts).length;
-        } else {
-          self.userStatistics.totalPost = 0;
+logOut(){
+    this.nav.setRoot(LoginPage)
+}
+updateName(){
+  let alert = this.alertCtrl.create({
+    message: "Your first name & last name",
+    inputs: [
+      {
+        name: 'firstName',
+        placeholder: 'Your first name',
+        value: this.userProfile.firstName
+      },
+      {
+        name: 'lastName',
+        placeholder: 'Your last name',
+        value: this.userProfile.lastName
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'Save',
+        handler: data => {
+          this.profileData.updateName(data.firstName, data.lastName);
         }
-      });
-  }
-
-  getUserComments() {
-    var self = this;
-
-    self.refData.getUserComments(self.authData.getLoggedInUser().uid)
-      .then(function (snapshot) {
-        let userComments: any = snapshot.val();
-        if (userComments !== null) {
-          self.userStatistics.totalComments = Object.keys(userComments).length;
-        } else {
-          self.userStatistics.totalComments = 0;
+      }
+    ]
+  });
+  alert.present();
+}
+updateDOB(birthDate){
+  this.profileData.updateDOB(birthDate);
+}
+updateEmail(){
+  let alert = this.alertCtrl.create({
+    inputs: [
+      {
+        name: 'newEmail',
+        placeholder: 'Your new email',
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'Save',
+        handler: data => {
+          this.profileData.updateEmail(data.newEmail);
         }
-      });
-  }
+      }
+    ]
+  });
+  alert.present();
+}
 
+updatePassword(){
+  let alert = this.alertCtrl.create({
+    inputs: [
+      {
+        name: 'newPassword',
+        placeholder: 'Your new password',
+        type: 'password'
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'Save',
+        handler: data => {
+          this.profileData.updatePassword(data.newPassword);
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 
-
-} 
+}
