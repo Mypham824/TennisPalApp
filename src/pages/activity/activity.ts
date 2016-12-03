@@ -10,7 +10,8 @@ import {DataSort} from '../../providers/data-sort';
 
 import {NewPostPage} from "../new-post/new-post";
 import{UserPage} from '../user/user';
-
+import {CommentCreatePage} from '../new-comment/new-comment';
+import {PostCommentsPage} from '../post-comments/post-comments';
 
 @Component({
   templateUrl: 'activity.html',
@@ -64,7 +65,7 @@ export class ActivityPage {
         }
       }, 1000);
     } else {
-      console.log('Firebase connection found (threads.ts) - attempt: ' + self.firebaseConnectionAttempts);
+      console.log('Firebase connection found (activity.ts) - attempt: ' + self.firebaseConnectionAttempts);
       self.refData.getStatisticsRef().on('child_changed', self.onPostAdded);
       if (self.authData.getLoggedInUser() === null) {
         //
@@ -192,7 +193,7 @@ createPost() {
 
   viewComments(key: string) {
     if (this.internetConnected) {
-      this.nav.push( {
+      this.nav.push(PostCommentsPage, {
         postKey: key
       });
     } else {

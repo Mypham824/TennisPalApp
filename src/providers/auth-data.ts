@@ -41,6 +41,8 @@ export class AuthData {
   return firebase.auth().sendPasswordResetEmail(email);
   
 }
+logoutUser(): any {
+  return this.fireAuth.signOut()
 
-
+}
 }
